@@ -67,9 +67,11 @@ const DynamicField: React.FC<DynamicFieldProps> = ({
             placeholder={field.placeholder}
             value={value || ''}
             onChange={(e) => {
-              field.mask 
-                ? handleMaskedChange(e.target.value)
-                : onChange(e.target.value)
+              if (field.mask) {
+                handleMaskedChange(e.target.value);
+              } else {
+                onChange(e.target.value);
+              }
             }}
             onBlur={onBlur}
             disabled={field.disabled}
