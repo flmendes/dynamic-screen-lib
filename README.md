@@ -335,7 +335,7 @@ import { DynamicScreenRenderer } from '@flmendes/dynamic-screen-lib';
 
 test('renders form and submits data', async () => {
   const onSuccess = jest.fn();
-  
+
   render(
     <DynamicScreenRenderer
       screenId="test-form"
@@ -485,9 +485,3 @@ MIT License - veja LICENSE.md para detalhes
 - [Exemplos no CodeSandbox](https://codesandbox.io/examples)
 - [Playground Interativo](https://playground.example.com)
 - [GitHub Issues](https://github.com/flmendes/dynamic-screen-lib/issues)
-
-## 📞 Suporte
-
-- Email: suporte@example.com
-- Slack: #dynamic-screens
-- Discord: discord.gg/example
