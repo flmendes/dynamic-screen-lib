@@ -1,0 +1,151 @@
+{
+  "screenId": "performance-review",
+  "version": "2.0.0",
+  "title": "Avaliação de Desempenho",
+  "description": "Avaliação trimestral de colaboradores",
+  "type": "tabbed",
+  "steps": [
+    {
+      "id": "technical-skills",
+      "title": "Habilidades Técnicas",
+      "sections": [
+        {
+          "id": "tech-assessment",
+          "fields": [
+            {
+              "id": "codingQuality",
+              "name": "codingQuality",
+              "label": "Qualidade do Código",
+              "type": "radio",
+              "options": [
+                { "label": "Excelente", "value": "5" },
+                { "label": "Muito Bom", "value": "4" },
+                { "label": "Bom", "value": "3" },
+                { "label": "Regular", "value": "2" },
+                { "label": "Insuficiente", "value": "1" }
+              ],
+              "validations": [
+                { "type": "required", "message": "Avaliação obrigatória" }
+              ]
+            },
+            {
+              "id": "problemSolving",
+              "name": "problemSolving",
+              "label": "Resolução de Problemas",
+              "type": "radio",
+              "options": [
+                { "label": "Excelente", "value": "5" },
+                { "label": "Muito Bom", "value": "4" },
+                { "label": "Bom", "value": "3" },
+                { "label": "Regular", "value": "2" },
+                { "label": "Insuficiente", "value": "1" }
+              ],
+              "validations": [
+                { "type": "required", "message": "Avaliação obrigatória" }
+              ]
+            },
+            {
+              "id": "technicalComments",
+              "name": "technicalComments",
+              "label": "Comentários sobre Habilidades Técnicas",
+              "type": "textarea",
+              "placeholder": "Descreva pontos fortes e áreas de melhoria",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Comentários são obrigatórios"
+                },
+                {
+                  "type": "min",
+                  "value": 20,
+                  "message": "Adicione pelo menos 20 caracteres"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "next-tech",
+          "label": "Próximo",
+          "type": "submit",
+          "action": "next",
+          "variant": "primary"
+        }
+      ]
+    },
+    {
+      "id": "soft-skills",
+      "title": "Habilidades Comportamentais",
+      "sections": [
+        {
+          "id": "soft-assessment",
+          "fields": [
+            {
+              "id": "communication",
+              "name": "communication",
+              "label": "Comunicação",
+              "type": "radio",
+              "options": [
+                { "label": "Excelente", "value": "5" },
+                { "label": "Muito Bom", "value": "4" },
+                { "label": "Bom", "value": "3" },
+                { "label": "Regular", "value": "2" },
+                { "label": "Insuficiente", "value": "1" }
+              ],
+              "validations": [
+                { "type": "required", "message": "Avaliação obrigatória" }
+              ]
+            },
+            {
+              "id": "teamwork",
+              "name": "teamwork",
+              "label": "Trabalho em Equipe",
+              "type": "radio",
+              "options": [
+                { "label": "Excelente", "value": "5" },
+                { "label": "Muito Bom", "value": "4" },
+                { "label": "Bom", "value": "3" },
+                { "label": "Regular", "value": "2" },
+                { "label": "Insuficiente", "value": "1" }
+              ],
+              "validations": [
+                { "type": "required", "message": "Avaliação obrigatória" }
+              ]
+            },
+            {
+              "id": "softComments",
+              "name": "softComments",
+              "label": "Comentários sobre Habilidades Comportamentais",
+              "type": "textarea",
+              "validations": [
+                { "type": "required", "message": "Comentários são obrigatórios" }
+              ]
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "prev-soft",
+          "label": "Anterior",
+          "type": "button",
+          "action": "previous",
+          "variant": "secondary"
+        },
+        {
+          "id": "submit-review",
+          "label": "Enviar Avaliação",
+          "type": "submit",
+          "action": "submit",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "onSubmit": {
+    "endpoint": "/api/performance-reviews",
+    "method": "POST"
+  }
+}

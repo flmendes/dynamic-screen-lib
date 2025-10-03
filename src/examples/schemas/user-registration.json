@@ -1,0 +1,341 @@
+{
+  "screenId": "user-registration",
+  "version": "1.0.0",
+  "title": "Cadastro de Usuário",
+  "description": "Complete seu cadastro para acessar o sistema",
+  "type": "wizard",
+  "metadata": {
+    "createdAt": "2025-01-15T10:00:00Z",
+    "author": "Sistema BFF"
+  },
+  "steps": [
+    {
+      "id": "personal-data",
+      "title": "Dados Pessoais",
+      "description": "Informações básicas sobre você",
+      "validationMode": "onBlur",
+      "sections": [
+        {
+          "id": "basic-info",
+          "title": "Informações Básicas",
+          "fields": [
+            {
+              "id": "fullName",
+              "name": "fullName",
+              "label": "Nome Completo",
+              "type": "text",
+              "placeholder": "Digite seu nome completo",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Nome é obrigatório"
+                },
+                {
+                  "type": "min",
+                  "value": 3,
+                  "message": "Nome deve ter no mínimo 3 caracteres"
+                }
+              ],
+              "helpText": "Digite seu nome como consta nos documentos"
+            },
+            {
+              "id": "email",
+              "name": "email",
+              "label": "E-mail",
+              "type": "email",
+              "placeholder": "seu@email.com",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "E-mail é obrigatório"
+                },
+                {
+                  "type": "email",
+                  "message": "E-mail inválido"
+                }
+              ]
+            },
+            {
+              "id": "cpf",
+              "name": "cpf",
+              "label": "CPF",
+              "type": "text",
+              "placeholder": "000.000.000-00",
+              "mask": "cpf",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "CPF é obrigatório"
+                },
+                {
+                  "type": "pattern",
+                  "value": "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+                  "message": "CPF inválido"
+                }
+              ]
+            },
+            {
+              "id": "birthdate",
+              "name": "birthdate",
+              "label": "Data de Nascimento",
+              "type": "date",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Data de nascimento é obrigatória"
+                }
+              ]
+            },
+            {
+              "id": "phone",
+              "name": "phone",
+              "label": "Telefone",
+              "type": "text",
+              "placeholder": "(00) 00000-0000",
+              "mask": "phone",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Telefone é obrigatório"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "next-step-1",
+          "label": "Próximo",
+          "type": "submit",
+          "action": "next",
+          "variant": "primary"
+        }
+      ]
+    },
+    {
+      "id": "address",
+      "title": "Endereço",
+      "description": "Onde você mora?",
+      "sections": [
+        {
+          "id": "address-info",
+          "title": "Dados de Endereço",
+          "fields": [
+            {
+              "id": "cep",
+              "name": "cep",
+              "label": "CEP",
+              "type": "text",
+              "placeholder": "00000-000",
+              "mask": "cep",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "CEP é obrigatório"
+                }
+              ]
+            },
+            {
+              "id": "street",
+              "name": "street",
+              "label": "Rua",
+              "type": "text",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Rua é obrigatória"
+                }
+              ]
+            },
+            {
+              "id": "number",
+              "name": "number",
+              "label": "Número",
+              "type": "text",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Número é obrigatório"
+                }
+              ]
+            },
+            {
+              "id": "complement",
+              "name": "complement",
+              "label": "Complemento",
+              "type": "text",
+              "placeholder": "Apartamento, bloco, etc."
+            },
+            {
+              "id": "neighborhood",
+              "name": "neighborhood",
+              "label": "Bairro",
+              "type": "text",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Bairro é obrigatório"
+                }
+              ]
+            },
+            {
+              "id": "city",
+              "name": "city",
+              "label": "Cidade",
+              "type": "text",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Cidade é obrigatória"
+                }
+              ]
+            },
+            {
+              "id": "state",
+              "name": "state",
+              "label": "Estado",
+              "type": "select",
+              "options": [
+                { "label": "São Paulo", "value": "SP" },
+                { "label": "Rio de Janeiro", "value": "RJ" },
+                { "label": "Minas Gerais", "value": "MG" },
+                { "label": "Distrito Federal", "value": "DF" }
+              ],
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Estado é obrigatório"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "prev-step-2",
+          "label": "Voltar",
+          "type": "button",
+          "action": "previous",
+          "variant": "secondary"
+        },
+        {
+          "id": "next-step-2",
+          "label": "Próximo",
+          "type": "submit",
+          "action": "next",
+          "variant": "primary"
+        }
+      ]
+    },
+    {
+      "id": "account-settings",
+      "title": "Configurações da Conta",
+      "sections": [
+        {
+          "id": "security",
+          "title": "Segurança",
+          "fields": [
+            {
+              "id": "password",
+              "name": "password",
+              "label": "Senha",
+              "type": "password",
+              "placeholder": "Digite uma senha forte",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Senha é obrigatória"
+                },
+                {
+                  "type": "min",
+                  "value": 8,
+                  "message": "Senha deve ter no mínimo 8 caracteres"
+                }
+              ],
+              "helpText": "Use pelo menos 8 caracteres com letras e números"
+            },
+            {
+              "id": "confirmPassword",
+              "name": "confirmPassword",
+              "label": "Confirmar Senha",
+              "type": "password",
+              "placeholder": "Digite a senha novamente",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Confirmação de senha é obrigatória"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preferences",
+          "title": "Preferências",
+          "collapsible": true,
+          "fields": [
+            {
+              "id": "newsletter",
+              "name": "newsletter",
+              "label": "Desejo receber newsletters e novidades",
+              "type": "checkbox"
+            },
+            {
+              "id": "notifications",
+              "name": "notifications",
+              "label": "Receber notificações por e-mail",
+              "type": "checkbox",
+              "defaultValue": true
+            }
+          ]
+        },
+        {
+          "id": "terms",
+          "title": "Termos e Condições",
+          "fields": [
+            {
+              "id": "acceptTerms",
+              "name": "acceptTerms",
+              "label": "Li e aceito os termos de uso e política de privacidade",
+              "type": "checkbox",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Você deve aceitar os termos para continuar"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "prev-step-3",
+          "label": "Voltar",
+          "type": "button",
+          "action": "previous",
+          "variant": "secondary"
+        },
+        {
+          "id": "submit-form",
+          "label": "Finalizar Cadastro",
+          "type": "submit",
+          "action": "submit",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "onSubmit": {
+    "endpoint": "/api/users/register",
+    "method": "POST",
+    "headers": {
+      "X-Client-Version": "1.0.0"
+    }
+  },
+  "onError": {
+    "showNotification": true
+  }
+}

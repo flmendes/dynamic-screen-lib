@@ -1,0 +1,203 @@
+{
+  "screenId": "order-form",
+  "version": "1.0.0",
+  "title": "Novo Pedido",
+  "description": "Crie um novo pedido no sistema",
+  "type": "single",
+  "steps": [
+    {
+      "id": "order-details",
+      "title": "Detalhes do Pedido",
+      "sections": [
+        {
+          "id": "customer-info",
+          "title": "Informações do Cliente",
+          "fields": [
+            {
+              "id": "customerId",
+              "name": "customerId",
+              "label": "Cliente",
+              "type": "select",
+              "options": [
+                { "label": "João Silva", "value": "1" },
+                { "label": "Maria Santos", "value": "2" },
+                { "label": "Pedro Oliveira", "value": "3" }
+              ],
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Selecione um cliente"
+                }
+              ]
+            },
+            {
+              "id": "orderType",
+              "name": "orderType",
+              "label": "Tipo de Pedido",
+              "type": "radio",
+              "options": [
+                { "label": "Venda", "value": "sale" },
+                { "label": "Troca", "value": "exchange" },
+                { "label": "Devolução", "value": "return" }
+              ],
+              "defaultValue": "sale",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Selecione o tipo de pedido"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "product-info",
+          "title": "Produtos",
+          "fields": [
+            {
+              "id": "productId",
+              "name": "productId",
+              "label": "Produto",
+              "type": "select",
+              "options": [
+                { "label": "Notebook Dell", "value": "prod-001" },
+                { "label": "Mouse Logitech", "value": "prod-002" },
+                { "label": "Teclado Mecânico", "value": "prod-003" }
+              ],
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Selecione um produto"
+                }
+              ]
+            },
+            {
+              "id": "quantity",
+              "name": "quantity",
+              "label": "Quantidade",
+              "type": "number",
+              "defaultValue": 1,
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Quantidade é obrigatória"
+                }
+              ]
+            },
+            {
+              "id": "discount",
+              "name": "discount",
+              "label": "Desconto (%)",
+              "type": "number",
+              "placeholder": "0",
+              "helpText": "Desconto aplicado ao pedido"
+            }
+          ]
+        },
+        {
+          "id": "delivery",
+          "title": "Entrega",
+          "fields": [
+            {
+              "id": "deliveryMethod",
+              "name": "deliveryMethod",
+              "label": "Método de Entrega",
+              "type": "select",
+              "options": [
+                { "label": "Retirada na loja", "value": "pickup" },
+                { "label": "Entrega expressa", "value": "express" },
+                { "label": "Entrega padrão", "value": "standard" }
+              ],
+              "defaultValue": "standard",
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Selecione o método de entrega"
+                }
+              ]
+            },
+            {
+              "id": "deliveryAddress",
+              "name": "deliveryAddress",
+              "label": "Endereço de Entrega",
+              "type": "textarea",
+              "placeholder": "Digite o endereço completo",
+              "dependsOn": {
+                "field": "deliveryMethod",
+                "value": "pickup",
+                "operator": "notEquals"
+              },
+              "validations": [
+                {
+                  "type": "required",
+                  "message": "Endereço de entrega é obrigatório"
+                }
+              ]
+            },
+            {
+              "id": "deliveryDate",
+              "name": "deliveryDate",
+              "label": "Data de Entrega Desejada",
+              "type": "date",
+              "dependsOn": {
+                "field": "deliveryMethod",
+                "value": "pickup",
+                "operator": "notEquals"
+              }
+            }
+          ]
+        },
+        {
+          "id": "additional",
+          "title": "Informações Adicionais",
+          "collapsible": true,
+          "defaultCollapsed": true,
+          "fields": [
+            {
+              "id": "notes",
+              "name": "notes",
+              "label": "Observações",
+              "type": "textarea",
+              "placeholder": "Adicione observações sobre o pedido",
+              "helpText": "Informações adicionais sobre o pedido"
+            },
+            {
+              "id": "urgentOrder",
+              "name": "urgentOrder",
+              "label": "Pedido urgente",
+              "type": "checkbox"
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "id": "cancel",
+          "label": "Cancelar",
+          "type": "button",
+          "action": "cancel",
+          "variant": "ghost"
+        },
+        {
+          "id": "save-draft",
+          "label": "Salvar Rascunho",
+          "type": "button",
+          "action": "custom",
+          "customAction": "save-draft",
+          "variant": "secondary"
+        },
+        {
+          "id": "submit",
+          "label": "Criar Pedido",
+          "type": "submit",
+          "action": "submit",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "onSubmit": {
+    "endpoint": "/api/orders",
+    "method": "POST"
+  }
+}
